@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
   config.vm.synced_folder ".", "/home/vagrant/app"
   config.vm.provider :virtualbox do |vb|  
     vb.name = "golang-vm"
-    vb.memory = "1536"
+    vb.memory = "3072"
   end
   config.vm.provision "shell", path: "provisioning/golang.sh"
   config.vm.provision "shell", path: "provisioning/profile.sh"
