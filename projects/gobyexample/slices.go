@@ -18,6 +18,9 @@ func main() {
   s = append(s, "e", "f")
   fmt.Println("apd:", s)
 
+  s = append(s, []string{"1", "2", "3"}...)
+  fmt.Println("apd slice:", s)
+
   c := make([]string, len(s))
   copy(c, s)
   fmt.Println("cpy:", c)
