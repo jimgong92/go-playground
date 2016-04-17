@@ -4,4 +4,4 @@
 .vagrant
 
 projects/toy-problems
-projects/gopl/**
+**/*.bin
