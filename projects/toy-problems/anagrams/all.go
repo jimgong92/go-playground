@@ -7,10 +7,7 @@
  */
 package main
 
-import (
-  "fmt"
-  "strings"
-)
+import "fmt"
 
 func main() {
   str := "abc"
@@ -18,27 +15,22 @@ func main() {
 }
 
 func allAnagrams(str string) []string {
-  var anagrams []string
-  solutions := make(map[string]bool)
-  options := strings.Split(str, "")
-  permutation([]string{}, options, &anagrams, solutions)
-  return anagrams
+  var solutions = make(map[string]bool)
+  return *permutation(str, solutions, "", &[]string{})
 }
 
-func permutation(seq []string, options []string, res *[]string, solutions map[string]bool) {
+func permutation(options string, solutions map[string]bool, seq string, res *[]string) *[]string {
   if len(options) > 0 {
     for i, char := range options {
-      duplOpt := append([]string{}, options...)
-      duplOpt = append(duplOpt[:i], duplOpt[i+1:]...)
-      duplSeq := append([]string{}, seq...)
-      duplSeq = append(duplSeq, char)
-      permutation(duplSeq, duplOpt, res, solutions)
+      updatedOptions := options[:i] + options[i+1:]
+      updatedSeq := seq + string(char)
+      permutation(updatedOptions, solutions, updatedSeq, res)
     }
   } else {
-    solution := strings.Join(seq, "")
-    if _, present := solutions[solution]; !present {
-      solutions[solution] = true
-      *res = append(*res, solution)
+    if _, present := solutions[seq]; !present {
+      solutions[seq] = true
+      *res = append(*res, seq)
     }
   }
+  return res
 }
