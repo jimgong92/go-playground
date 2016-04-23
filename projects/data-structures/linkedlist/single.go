@@ -23,7 +23,7 @@ func (l *SingleLL) addToTail(v interface{}) {
   }
 }
 
-func (l *SingleLL) removeHead(v interface{}) interface{} {
+func (l *SingleLL) removeHead() interface{} {
   if (l.head == nil) {
     return nil
   }
@@ -47,5 +47,11 @@ func (l *SingleLL) contains(v interface{}) bool {
 }
 
 func main() {
-  // TODO
+  list := SingleLL{}
+  list.addToTail(5)
+  list.addToTail(6)
+  list.addToTail(7)
+  fmt.Println(list.removeHead())
+  fmt.Println(list.removeHead())
+  fmt.Println(list.removeHead())
 }
