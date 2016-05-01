@@ -10,7 +10,7 @@ func main() {
   go func() {
     time.Sleep(time.Second * 2)
     c1 <- "Result 1"
-  }
+  }()
 
   select {
   case res := <-c1:
@@ -23,7 +23,7 @@ func main() {
   go func() {
     time.Sleep(time.Second * 2)
     c2 <- "Result 2"
-  }
+  }()
 
   select {
   case res := <-c2:
